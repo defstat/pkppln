@@ -7,11 +7,11 @@
   "license": "MIT",
   "dependencies": {
     "bootstrap3": "^3.3.5",
-    "jquery": "^3.5.1",
-    "jquery-ui": "^1.12.1",
+    "jquery": "3.6.3",
+    "jquery-ui": "1.13.2",
     "select2": "^4.0.13",
     "select2-bootstrap-css": "^1.4.6",
     "symfony-collection": "^2.1.30",
-    "tinymce": "^5.3.2"
+    "tinymce": "5.10.7"
   }
 }

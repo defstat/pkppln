@@ -7,12 +7,24 @@ bootstrap3@^3.3.5:
   resolved "https://registry.yarnpkg.com/bootstrap3/-/bootstrap3-3.3.5.tgz#496a4ef6c087214fa96838196d60de645e82591a"
   integrity sha1-SWpO9sCHIU+paDgZbWDeZF6CWRo=
 
-jquery-ui@>=1.0, jquery-ui@^1.12.1:
+jquery-ui@1.13.2:
+  version "1.13.2"
+  resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.13.2.tgz#de03580ae6604773602f8d786ad1abfb75232034"
+  integrity sha512-wBZPnqWs5GaYJmo1Jj0k/mrSkzdQzKDwhXNtHKcBdAcKVxMM3KNYFq+iJ2i1rwiG53Z8M4mTn3Qxrm17uH1D4Q==
+  dependencies:
+    jquery ">=1.8.0 <4.0.0"
+
+jquery-ui@>=1.0:
   version "1.12.1"
   resolved "https://registry.yarnpkg.com/jquery-ui/-/jquery-ui-1.12.1.tgz#bcb4045c8dd0539c134bc1488cdd3e768a7a9e51"
   integrity sha1-vLQEXI3QU5wTS8FIjN0+dop6nlE=
 
-jquery@>=1.7, jquery@^3.5.1:
+jquery@3.6.3, "jquery@>=1.8.0 <4.0.0":
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.3.tgz#23ed2ffed8a19e048814f13391a19afcdba160e6"
+  integrity sha512-bZ5Sy3YzKo9Fyc8wH2iIQK4JImJ6R0GWI9kL1/k7Z91ZBNgkRXE6U0JfHIizZbort8ZunhSI3jw9I6253ahKfg==
+
+jquery@>=1.7:
   version "3.5.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.5.1.tgz#d7b4d08e1bfdb86ad2f1a3d039ea17304717abb5"
   integrity sha512-XwIBPqcMn57FxfT+Go5pzySnm4KWkT1Tv7gjrpT1srtf8Weynl6R273VJ5GjkRb51IzMp5nbaPjJXMWeju2MKg==
@@ -35,7 +47,7 @@ symfony-collection@^2.1.30:
     jquery ">=1.7"
     jquery-ui ">=1.0"
 
-tinymce@^5.3.2:
-  version "5.3.2"
-  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.3.2.tgz#c53622edf9c4b214bb912658762d6ea831d7d469"
-  integrity sha512-d8LaanlW+i/V5Ncb49gR2ncx0Tl2iWJBsepdsuT5qOlFaAPueIfc+btwwERXra7M6KDx0mOwKJaE2FBI+lHz3Q==
+tinymce@5.10.7:
+  version "5.10.7"
+  resolved "https://registry.yarnpkg.com/tinymce/-/tinymce-5.10.7.tgz#d89d446f1962f2a1df6b2b70018ce475ec7ffb80"
+  integrity sha512-9UUjaO0R7FxcFo0oxnd1lMs7H+D0Eh+dDVo5hKbVe1a+VB0nit97vOqlinj+YwgoBDt6/DSCUoWqAYlLI8BLYA==
