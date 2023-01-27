@@ -147,9 +147,9 @@ class PingResult
     }
 
     /**
-     * Get the OJS release version.
+     * Get the release version.
      */
-    public function getOjsRelease(): ?string
+    public function getApplicationVersion(): ?string
     {
         if (! $this->xml) {
             return null;

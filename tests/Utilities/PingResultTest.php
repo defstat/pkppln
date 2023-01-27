@@ -114,9 +114,9 @@ ENDXML;
         $this->assertSame('Validated', $this->result->getHeader('foo')[0]);
     }
 
-    public function testGetOjsRelease(): void
+    public function testGetApplicationVersion(): void
     {
-        $this->assertSame('2.4.8.1', $this->result->getOjsRelease());
+        $this->assertSame('2.4.8.1', $this->result->getApplicationVersion());
     }
 
     public function testGetPluginReleaseVersion(): void

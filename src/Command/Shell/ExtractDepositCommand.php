@@ -43,7 +43,7 @@ class ExtractDepositCommand extends Command
     public function configure(): void
     {
         $this->setName('pn:extract');
-        $this->setDescription('Extract the content of an OJS deposit XML file.');
+        $this->setDescription('Extract the content of a deposit XML file.');
         $this->addArgument('file', InputArgument::REQUIRED, 'UUID of the deposit to extract.');
         $this->addArgument('path', InputArgument::OPTIONAL, 'Path to extract to. Defaults to current directory.', getcwd());
         $this->addOption('source-names', null, InputOption::VALUE_NONE, 'Use original source file names - use with extreme care.');

@@ -122,6 +122,29 @@ class XmlParserTest extends TestCase
         ];
     }
 
+    public function testMalformedXml(): void
+    {
+        $xml = <<<'ENDXML'
+        <?xml bad prolog?>
+        trailing data
+        <test>
+            <element bad escaped="attribute""></element>
+            Invalid character ahead < which could be a bad tag>
+        </test>
+        more trailing data
+ENDXML;
+        $expected = <<<'ENDXML'
+<?xml version="1.0"?>
+<test>
+<element bad="" escaped="attribute"/>Invalid character ahead &lt; which could be a bad tag&gt;</test>
+
+ENDXML;
+        $cleanXml = $this->parser->cleanXml($xml);
+        $xml = simplexml_load_string($cleanXml);
+        $this->assertNotFalse($xml);
+        $this->assertEquals($expected, $xml->saveXML());
+    }
+
     protected function setup(): void
     {
         parent::setUp();

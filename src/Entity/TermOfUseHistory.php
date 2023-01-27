@@ -23,7 +23,7 @@ use Nines\UtilBundle\Entity\AbstractEntity;
 class TermOfUseHistory extends AbstractEntity
 {
     /**
-     * A term ID, similar to the OJS translation keys.
+     * The term identification.
      *
      * @ORM\Column(type="integer")
      */

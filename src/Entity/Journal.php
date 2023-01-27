@@ -62,11 +62,11 @@ class Journal extends AbstractEntity
     private DateTimeInterface $contacted;
 
     /**
-     * OJS version powering the journal.
+     * Application version.
      *
      * @ORM\Column(type="string", nullable=true, length=12)
      */
-    private ?string $ojsVersion = null;
+    private ?string $version = null;
 
     /**
      * When the journal manager was notified.
@@ -201,21 +201,21 @@ class Journal extends AbstractEntity
     }
 
     /**
-     * Set ojsVersion.
+     * Set application version.
      */
-    public function setOjsVersion(?string $ojsVersion): static
+    public function setVersion(?string $version): static
     {
-        $this->ojsVersion = $ojsVersion;
+        $this->version = $version;
 
         return $this;
     }
 
     /**
-     * Get ojsVersion.
+     * Get application version.
      */
-    public function getOjsVersion(): ?string
+    public function getVersion(): ?string
     {
-        return $this->ojsVersion;
+        return $this->version;
     }
 
     /**

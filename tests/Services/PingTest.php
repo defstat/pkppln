@@ -104,7 +104,7 @@ ENDXML;
     {
         $result = $this->createMock(PingResult::class);
         $result->method('getHttpStatus')->willReturn(200);
-        $result->method('getOjsRelease')->willReturn(null);
+        $result->method('getApplicationVersion')->willReturn(null);
         $journal = $this->getReference('journal.1');
         $this->ping->process($journal, $result);
         $this->assertSame('ping-error', $journal->getStatus());
@@ -114,7 +114,7 @@ ENDXML;
     {
         $result = $this->createMock(PingResult::class);
         $result->method('getHttpStatus')->willReturn(200);
-        $result->method('getOjsRelease')->willReturn('2.4.0');
+        $result->method('getApplicationVersion')->willReturn('2.4.0');
         $result->method('getJournalTitle')->willReturn('Yes Minister');
         $result->method('areTermsAccepted')->willReturn('Yes');
 
@@ -129,7 +129,7 @@ ENDXML;
     {
         $result = $this->createMock(PingResult::class);
         $result->method('getHttpStatus')->willReturn(200);
-        $result->method('getOjsRelease')->willReturn('2.4.9');
+        $result->method('getApplicationVersion')->willReturn('2.4.9');
         $result->method('getJournalTitle')->willReturn('Yes Minister');
         $result->method('areTermsAccepted')->willReturn('Yes');
 
@@ -149,7 +149,7 @@ ENDXML;
     {
         $result = $this->createMock(PingResult::class);
         $result->method('getHttpStatus')->willReturn(200);
-        $result->method('getOjsRelease')->willReturn('2.4.9');
+        $result->method('getApplicationVersion')->willReturn('2.4.9');
         $result->method('getJournalTitle')->willReturn('Yes Minister');
         $result->method('areTermsAccepted')->willReturn('Yes');
 

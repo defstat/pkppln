@@ -51,7 +51,7 @@ class PingCommand extends Command
     protected function configure(): void
     {
         $this->setName('pn:ping-whitelist');
-        $this->setDescription('Find journals running a sufficiently new version of OJS and whitelist them.');
+        $this->setDescription('Find journals running a sufficiently new version of the software and whitelist them.');
         $this->addArgument('minVersion', InputArgument::OPTIONAL, 'Minimum version required to whitelist.');
         $this->addOption('dry-run', 'd', InputOption::VALUE_NONE, 'Do not update the whitelist - report only.');
         $this->addOption('all', 'a', InputOption::VALUE_NONE, 'Ping all journals, including whitelisted/blacklisted.');

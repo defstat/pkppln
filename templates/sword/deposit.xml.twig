@@ -2,7 +2,7 @@
         xmlns:dcterms="http://purl.org/dc/terms/"
         xmlns:lom="http://lockssomatic.info/SWORD2"
         xmlns:pkp="http://pkp.sfu.ca/SWORD">
-    <title>Deposit from OJS part {{  deposit.auContainer.id }}</title>
+    <title>Deposit from part {{  deposit.auContainer.id }}</title>
     <id>urn:uuid:{{ deposit.depositUuid }}</id>
     <updated>{{ deposit.received|date('Y-m-d') }}</updated>
     <author><name>{{ deposit.journal.title }}</name></author>

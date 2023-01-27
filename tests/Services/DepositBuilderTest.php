@@ -97,7 +97,7 @@ ENDXML;
     public function depositData()
     {
         return [
-            ['2.4.8', 'getJournalVersion'],
+            ['2.4.8', 'getVersion'],
             [['publishingMode' => 'Open'], 'getLicense'],
             ['', 'getFileType'],
             ['00FD6D96-0155-43A4-97F7-2C6EE8EBFF09', 'getDepositUuid'],

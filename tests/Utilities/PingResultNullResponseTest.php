@@ -49,9 +49,9 @@ class PingResultNullResponseTest extends TestCase
         $this->assertSame([], $this->result->getHeader('foo'));
     }
 
-    public function testGetOjsRelease(): void
+    public function testGetApplicationVersion(): void
     {
-        $this->assertNull($this->result->getOjsRelease());
+        $this->assertNull($this->result->getApplicationVersion());
     }
 
     public function testGetPluginReleaseVersion(): void

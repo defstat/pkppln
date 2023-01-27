@@ -16,7 +16,10 @@ use App\Repository\Repository;
 use App\Services\BlackWhiteList;
 use App\Services\DepositBuilder;
 use App\Services\JournalBuilder;
+use App\Services\Ping;
 use App\Utilities\Namespaces;
+use App\Utilities\ResponseFixer;
+use App\Utilities\XmlParser;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use DomainException;
@@ -115,25 +118,25 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
     }
 
     /**
-     * Figure out which message to return for the network status widget in OJS.
+     * Figure out which message to return for the network status widget.
      */
     private function getNetworkMessage(Journal $journal): string
     {
-        if (null === $journal->getOjsVersion()) {
+        if (null === $journal->getVersion()) {
             $networkDefault = $this->getParameter('pn.network_default');
             \assert(\is_string($networkDefault));
             return $networkDefault;
         }
         $minVersion = $this->getParameter('pn.min_accepted_version');
         \assert(\is_string($minVersion));
-        if (version_compare($journal->getOjsVersion(), $minVersion, '>=')) {
+        if (version_compare($journal->getVersion(), $minVersion, '>=')) {
             $networkAccepting = $this->getParameter('pn.network_accepting');
             \assert(\is_string($networkAccepting));
             return $networkAccepting;
         }
-        $oldVersionWarning = $this->getParameter('pn.network_old_version');
-        \assert(\is_string($oldVersionWarning));
-        return $oldVersionWarning;
+        $unsupportedVersionWarning = $this->getParameter('pn.network_unsupported_version');
+        \assert(\is_string($unsupportedVersionWarning));
+        return sprintf($unsupportedVersionWarning, $minVersion);
     }
 
     /**
@@ -143,7 +146,7 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
      */
     private function getXml(Request $request): SimpleXMLElement
     {
-        $content = $request->getContent();
+        $content =  XmlParser::cleanXml((string) $request->getContent());
         if (! $content || ! \is_string($content)) {
             throw new BadRequestHttpException('Expected request body. Found none.', null, Response::HTTP_BAD_REQUEST);
         }
@@ -171,7 +174,7 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
      * )
      * @return array<string,mixed>
      */
-    public function serviceDocumentAction(Request $request, JournalBuilder $builder): array
+    public function serviceDocumentAction(Request $request, JournalBuilder $builder, Ping $ping): array
     {
         $obh = strtoupper((string) $this->fetchHeader($request, 'On-Behalf-Of'));
         $journalUrl = $this->fetchHeader($request, 'Journal-Url');
@@ -187,15 +190,19 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
         $journal = null;
         try {
             $journal = $builder->fromRequest($obh, $journalUrl);
-        }
-        catch (DomainException $e) {
+        } catch (DomainException $e) {
             throw new BadRequestHttpException($e->getMessage(), null, 400);
         }
+
+        $this->em->flush();
+
+        // Attempts to ping (whitelist the journal), in order to enable the client to start depositing right away
+        $ping->ping($journal);
 
         if (! $journal->getTermsAccepted()) {
             $accepting = false;
         }
-        $this->em->flush();
+
         $termsRepo = Repository::termOfUse();
 
         return [
@@ -237,8 +244,7 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
             // Update the journal metadata.
             $journalBuilder->fromXml($xml, $journal->getUuid());
             $deposit = $depositBuilder->fromXml($journal, $xml);
-        }
-        catch (DomainException $e) {
+        } catch (DomainException $e) {
             throw new BadRequestHttpException($e->getMessage(), null, 400);
         }
 

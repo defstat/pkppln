@@ -110,7 +110,7 @@ class DepositBuilder
         $deposit->setSize((int) Xpath::getXmlValue($xml, 'pkp:content/@size'));
         $deposit->setUrl($url);
 
-        $deposit->setJournalVersion((string) Xpath::getXmlValue($xml, 'pkp:content/@ojsVersion', Deposit::DEFAULT_JOURNAL_VERSION));
+        $deposit->setVersion((string) Xpath::getXmlValue($xml, 'pkp:content/@ojsVersion', Deposit::DEFAULT_JOURNAL_VERSION));
         $nodes = $xml->xpath('//pkp:license/node()');
         \assert(is_iterable($nodes));
         foreach ($nodes as $node) {

@@ -35,9 +35,9 @@ class Ping
     ];
 
     /**
-     * Minimum expected OJS version.
+     * Minimum expected application version.
      */
-    private string $minOjsVersion;
+    private string $minVersion;
 
     /**
      * Doctrine instance.
@@ -57,9 +57,9 @@ class Ping
     /**
      * Construct the ping service.
      */
-    public function __construct(string $minOjsVersion, EntityManagerInterface $em, BlackWhiteList $list)
+    public function __construct(string $minVersion, EntityManagerInterface $em, BlackWhiteList $list)
     {
-        $this->minOjsVersion = $minOjsVersion;
+        $this->minVersion = $minVersion;
         $this->em = $em;
         $this->list = $list;
         $this->client = new Client(['verify' => false, 'connect_timeout' => 15]);
@@ -78,7 +78,7 @@ class Ping
      */
     public function process(Journal $journal, PingResult $result): void
     {
-        if (! $result->getOjsRelease()) {
+        if (! $result->getApplicationVersion()) {
             $journal->setStatus('ping-error');
             $result->addError('Journal version information missing in ping result.');
 
@@ -86,10 +86,10 @@ class Ping
         }
         $journal->setContacted(new DateTime());
         $journal->setTitle($result->getJournalTitle());
-        $journal->setOjsVersion($result->getOjsRelease());
+        $journal->setVersion($result->getApplicationVersion());
         $journal->setTermsAccepted('yes' === $result->areTermsAccepted());
         $journal->setStatus('healthy');
-        if (version_compare($result->getOjsRelease(), $this->minOjsVersion, '<')) {
+        if (version_compare($result->getApplicationVersion(), $this->minVersion, '<')) {
             return;
         }
         if ($this->list->isListed($journal->getUuid())) {

@@ -39,7 +39,7 @@ class HarvestCommand extends AbstractProcessingCmd
     protected function configure(): void
     {
         $this->setName('pn:harvest');
-        $this->setDescription('Harvest OJS deposits.');
+        $this->setDescription('Harvest deposits.');
         parent::configure();
     }
 

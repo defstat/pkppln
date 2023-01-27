@@ -37,7 +37,7 @@ class DepositFixtures extends Fixture implements DependentFixtureInterface
     {
         for ($i = 0; $i < 4; $i++) {
             $fixture = new Deposit();
-            $fixture->setJournalVersion('2.4.8.' . $i);
+            $fixture->setVersion('2.4.8.' . $i);
             $fixture->setLicense(['Creative Commons' => 'License text']);
             $fixture->setFileType('application/zip');
             $fixture->setDepositUuid(self::UUIDS[$i]);

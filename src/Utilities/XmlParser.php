@@ -106,4 +106,19 @@ class XmlParser
             . "{$error->file}:{$error->line}:{$error->column}." : '';
         throw new Exception("Filtered XML cannot be parsed.{$filteredError}");
     }
+
+    /**
+     * Attempts to fix mal-formed XML content and drop trailing data
+     */
+    public static function cleanXml(string $xml): string
+    {
+        if (\function_exists('tidy_repair_string')) {
+            return tidy_repair_string($xml, ['input-xml' => 1, 'output-xml' => 1, 'wrap' => 0, 'add-xml-decl' => 1, 'input-encoding' => 'utf8', 'output-encoding' => 'utf8']) ?: $xml;
+        }
+        $document = new DOMDocument();
+        $document->strictErrorChecking = false;
+        $document->recover = true;
+        $document->loadXml($xml, \LIBXML_HTML_NODEFDTD | \LIBXML_HTML_NOIMPLIED);
+        return $document->saveXml() ?: $xml;
+    }
 }

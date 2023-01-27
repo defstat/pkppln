@@ -108,4 +108,4 @@ PHP CS Fixer
   - `PN_UUID`: The secret ID from the `LOCKSS-O-MATIC` service.
   - `MAILER_DSN`: Mail configuration (see: https://symfony.com/doc/current/mailer.html#transport-setup).
   - `APP_SECRET`, `SYMFONY_DECRYPTION_SECRET`: Ensure they have a good entropy for extra security (e.g. http://nux.net/secret).
-- The staging server is also able to hold deposits made by applications above the version `pn.held_versions` (located at the `config\services.yaml`).
+- The staging server is also able to hold deposits made by applications above the version `pn.max_accepted_version` (located at the `config\services.yaml`).

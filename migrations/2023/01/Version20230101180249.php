@@ -66,7 +66,8 @@ final class Version20230101180249 extends AbstractMigration
             DROP package_path,
             DROP error_count,
             CHANGE file_type file_type VARCHAR(255) DEFAULT NULL,
-            CHANGE deposit_receipt deposit_receipt VARCHAR(2048) DEFAULT NULL'
+            CHANGE deposit_receipt deposit_receipt VARCHAR(2048) DEFAULT NULL,
+            CHANGE COLUMN `journal_version` `version` VARCHAR(15) NOT NULL DEFAULT \'2.4.8\''
         );
         $this->addSql('CREATE FULLTEXT INDEX IDX_95DB9D39E2AB67BDF47645AE ON deposit (deposit_uuid, url)');
         $this->addSql(
@@ -79,7 +80,8 @@ final class Version20230101180249 extends AbstractMigration
             CHANGE title title VARCHAR(255) DEFAULT NULL,
             CHANGE issn issn VARCHAR(9) DEFAULT NULL,
             CHANGE email email VARCHAR(255) DEFAULT NULL,
-            CHANGE publisher_name publisher_name VARCHAR(255) DEFAULT NULL'
+            CHANGE publisher_name publisher_name VARCHAR(255) DEFAULT NULL,
+            CHANGE COLUMN ojs_version version VARCHAR(12) NULL DEFAULT NULL'
         );
         $this->addSql('CREATE FULLTEXT INDEX IDX_C1A7E74DD17F50A62B36786B9FC5D7F6F47645AEE7927C74BF3AAE51E33 ON journal (uuid, title, issn, url, email, publisher_name, publisher_url)');
         $this->addSql(

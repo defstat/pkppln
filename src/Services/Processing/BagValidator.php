@@ -58,9 +58,9 @@ class BagValidator
 
             return false;
         }
-        $journalVersion = implode('', $bag->getBagInfoByTag('PKP-PLN-OJS-Version'));
-        if ($journalVersion && $journalVersion !== $deposit->getJournalVersion()) {
-            $deposit->addErrorLog("Bag journal version tag {$journalVersion} does not match deposit journal version {$deposit->getJournalVersion()}");
+        $version = implode('', $bag->getBagInfoByTag('PKP-PLN-OJS-Version'));
+        if ($version && $version !== $deposit->getVersion()) {
+            $deposit->addErrorLog("Bag journal version tag {$version} does not match deposit journal version {$deposit->getVersion()}");
         }
 
         return true;
