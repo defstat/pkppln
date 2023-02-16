@@ -18,7 +18,6 @@ use App\Services\DepositBuilder;
 use App\Services\JournalBuilder;
 use App\Services\Ping;
 use App\Utilities\Namespaces;
-use App\Utilities\ResponseFixer;
 use App\Utilities\XmlParser;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;

@@ -1,9 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}TermOfUse{% endblock %}
+{% block title %}Term Of Use{% endblock %}
 
 {% block pageheader %}
-    <h1>TermOfUse Details</h1>
+    <h1>Term Of Use Details</h1>
 {% endblock %}
 
 {% block body %}
@@ -16,7 +16,7 @@
                 <a href="{{ path('termofuse_edit', { 'id': termOfUse.id }) }}" class="btn btn-default">
                     <span class='glyphicon glyphicon-edit'></span> Edit
                 </a>
-                <a href="{{ path('termofuse_delete', { 'id': termOfUse.id }) }}" class="btn btn-default" data-confirm="Are you sure you want to delete this TermOfUse?">
+                <a href="{{ path('termofuse_delete', { 'id': termOfUse.id }) }}" class="btn btn-default" data-confirm="Are you sure you want to delete this term of use?">
                     <span class='glyphicon glyphicon-remove'></span> Delete
                 </a>
             {% endif %}

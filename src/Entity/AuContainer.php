@@ -27,7 +27,7 @@ use Nines\UtilBundle\Entity\AbstractEntity;
 class AuContainer extends AbstractEntity
 {
     /**
-     * List of deposits in one AU.
+     * List of deposits in one AU (Archival Unit).
      *
      * @var Collection<int,Deposit>|Deposit[]
      * @ORM\OneToMany(targetEntity="Deposit", mappedBy="auContainer", fetch="EXTRA_LAZY")

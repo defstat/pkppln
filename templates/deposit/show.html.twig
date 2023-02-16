@@ -33,7 +33,7 @@
                 <td>{{ deposit.depositUuid }}</td>
             </tr>
             <tr>
-                <th>AU Container</th>
+                <th>AU (Archival Unit) Container</th>
                 <td>
                     {% if deposit.auContainer %}
                         <a href='{{ path('aucontainer_show', {'id': deposit.auContainer.id}) }}'>{{ deposit.auContainer.id }}</a>
