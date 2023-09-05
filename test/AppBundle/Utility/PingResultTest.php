@@ -52,7 +52,7 @@ class PingResultTest extends PHPUnit_Framework_TestCase {
 	}
 
 	public function testAreTermsAccepted() {
-		$this->assertEquals('yes', $this->result->areTermsAccepted());
+		$this->assertEquals('yes', strtolower($this->result->areTermsAccepted()));
 	}
 
 	public function testGetJournalTitle() {

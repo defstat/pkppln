@@ -119,7 +119,7 @@ class Ping
                 $journal->setContacted(new DateTime());
                 $journal->setTitle($pingResponse->getJournalTitle('(unknown title)'));
                 $journal->setOjsVersion($pingResponse->getOjsRelease());
-                $journal->setTermsAccepted($pingResponse->areTermsAccepted() === 'yes');
+                $journal->setTermsAccepted(strtolower($pingResponse->areTermsAccepted()) === 'yes');
             } else {
                 $journal->setStatus('ping-error');
             }
