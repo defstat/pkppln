@@ -307,7 +307,7 @@ class SwordClient
 
         $deposit->setDepositReceipt($response->getHeader('Location'));
         $deposit->setDepositDate(new DateTime());
-        // TODO should I do something wtih responseXML here?
+        // TODO should I do something with responseXML here?
         $this->namespaces->registerNamespaces($responseXml);
 
         return true;

@@ -167,6 +167,7 @@ class DepositBuilder
         }
         $deposit->setAction($action);
         $deposit->setState('depositedByJournal');
+        $deposit->setPlnState(null);
         $deposit->setChecksumType($this->getXmlValue($xml, 'pkp:content/@checksumType'));
         $deposit->setChecksumValue($this->getXmlValue($xml, 'pkp:content/@checksumValue'));
         $deposit->setDepositUuid($deposit_uuid);
