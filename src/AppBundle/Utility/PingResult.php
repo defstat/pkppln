@@ -180,7 +180,7 @@ class PingResult
      */
     public function getOjsRelease()
     {
-        return $this->simpleQuery('/plnplugin/ojsInfo/release');
+        return $this->simpleQuery('//ojsInfo/release');
     }
 
     /**
@@ -190,7 +190,7 @@ class PingResult
      */
     public function getPluginReleaseVersion()
     {
-        return $this->simpleQuery('/plnplugin/pluginInfo/release');
+        return $this->simpleQuery('//pluginInfo/release');
     }
 
     /**
@@ -200,7 +200,7 @@ class PingResult
      */
     public function getPluginReleaseDate()
     {
-        return $this->simpleQuery('/plnplugin/pluginInfo/releaseDate');
+        return $this->simpleQuery('//pluginInfo/releaseDate');
     }
 
     /**
@@ -210,7 +210,7 @@ class PingResult
      */
     public function isPluginCurrent()
     {
-        if ($this->simpleQuery('/plnplugin/pluginInfo/current')) {
+        if ($this->simpleQuery('//pluginInfo/current')) {
             return 'Yes';
         }
 
@@ -224,7 +224,7 @@ class PingResult
      */
     public function areTermsAccepted()
     {
-        return $this->simpleQuery('/plnplugin/pluginInfo/terms/@termsAccepted');
+        return $this->simpleQuery('//pluginInfo/terms/@termsAccepted');
     }
 
     /**
@@ -234,7 +234,7 @@ class PingResult
      */
     public function getJournalTitle($default = null)
     {
-        $title = $this->simpleQuery('/plnplugin/journalInfo/title');
+        $title = $this->simpleQuery('//journalInfo/title');
         if ($title === null) {
             return $default;
         }
@@ -249,7 +249,7 @@ class PingResult
      */
     public function getArticleCount()
     {
-        return $this->simpleQuery('/plnplugin/journalInfo/articles/@count');
+        return $this->simpleQuery('//journalInfo/articles/@count');
     }
 
     /**
@@ -263,7 +263,7 @@ class PingResult
         if ($this->xml === null) {
             return $articles;
         }
-        foreach ($this->xml->xpath('/plnplugin/journalInfo/articles/article') as $element) {
+        foreach ($this->xml->xpath('//journalInfo/articles/article') as $element) {
             $articles[] = array(
                 'date' => $element['pubDate'],
                 'title' => (string) $element,
