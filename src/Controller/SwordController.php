@@ -260,7 +260,7 @@ class SwordController extends AbstractController implements PaginatorAwareInterf
     }
 
     /**
-     * Check that status of a deposit by fetching the sword statemt.
+     * Check that status of a deposit by fetching the sword statement.
      *
      * @Route("/cont-iri/{journal_uuid}/{deposit_uuid}/state", methods={"GET"}, name="sword_statement", requirements={
      *     "journal_uuid": ".{36}",
