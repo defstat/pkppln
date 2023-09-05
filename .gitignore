@@ -18,3 +18,5 @@ phpunit.xml
 nbproject
 .idea
 docs/venv
+/var
+/public
