@@ -103,7 +103,7 @@ class HealthCheckCommand extends Command
         if ($result->hasError()) {
             $this->logger?->error($result->getError());
         }
-        return strtolower($result->areTermsAccepted()) === 'yes';
+        return strtolower((string) $result->areTermsAccepted()) === 'yes';
     }
 
     /**

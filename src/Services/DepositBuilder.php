@@ -100,6 +100,7 @@ class DepositBuilder
 
         $deposit = $this->findDeposit(substr($id, 9, 36));
         $deposit->setState('depositedByJournal');
+        $deposit->setLockssState(null);
         $deposit->setChecksumType((string) Xpath::getXmlValue($xml, 'pkp:content/@checksumType'));
         $deposit->setChecksumValue((string) Xpath::getXmlValue($xml, 'pkp:content/@checksumValue'));
         $deposit->setFileType('');

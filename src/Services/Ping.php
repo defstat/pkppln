@@ -87,7 +87,7 @@ class Ping
         $journal->setContacted(new DateTime());
         $journal->setTitle($result->getJournalTitle());
         $journal->setVersion($result->getApplicationVersion());
-        $journal->setTermsAccepted('yes' === strtolower($result->areTermsAccepted()));
+        $journal->setTermsAccepted('yes' === strtolower((string) $result->areTermsAccepted()));
         $journal->setStatus('healthy');
         if (version_compare($result->getApplicationVersion(), $this->minVersion, '<')) {
             return;
